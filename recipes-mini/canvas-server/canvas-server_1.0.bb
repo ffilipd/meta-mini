@@ -12,7 +12,6 @@ S = "${WORKDIR}/git"
 
 TARGET_CC_ARCH +="${LDFLAGS}"
 
-
 PUBLICDIR ="/home/root/public"
 
 do_compile() {
@@ -22,7 +21,6 @@ do_compile() {
 do_install() {
     install -d ${D}${bindir}
     install -m 0755 server ${D}${bindir}
-}
 
     install -d ${D}${PUBLICDIR}
     cp -r ${S}/public/* ${D}${PUBLICDIR}
