@@ -1,0 +1,9 @@
+[Unit]
+Description=Canvas-Server startup script
+
+[Service]
+ExecStart=/usr/bin/server
+
+[Install]
+WantedBy=multi-user.target
+

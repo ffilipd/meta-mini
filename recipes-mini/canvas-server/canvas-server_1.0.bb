@@ -27,3 +27,16 @@ do_install() {
 }
 
 FILES_${PN} += "${PUBLICDIR}"
+
+
+inherit systemd
+SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_SERVICE_${PN} = "canvas-server.service"
+
+SRC_URI_append = " file://canvas-server.service "
+FILES_${PN} += "${systemd_unitdir}/system/canvas-server.service"
+
+do_install_append() {
+  install -d ${D}/${systemd_unitdir}/system
+  install -m 0644 ${WORKDIR}/canvas-server.service ${D}/${systemd_unitdir}/system
+}

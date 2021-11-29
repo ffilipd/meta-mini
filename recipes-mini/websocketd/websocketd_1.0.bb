@@ -17,3 +17,14 @@ export http_proxy
 # Development package contains all the examples in different languages
 INSANE_SKIP_${PN}-dev = "file-rdeps"
 
+inherit systemd
+SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_SERVICE_${PN} = "websocketd.service"
+
+SRC_URI_append = " file://websocketd.service "
+FILES_${PN} += "${systemd_unitdir}/system/websocketd.service"
+
+do_install_append() {
+  install -d ${D}/${systemd_unitdir}/system
+  install -m 0644 ${WORKDIR}/websocketd.service ${D}/${systemd_unitdir}/system
+}

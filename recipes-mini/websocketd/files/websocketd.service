@@ -1,0 +1,9 @@
+[Unit]
+Description=Websocketd startup script
+
+[Service]
+ExecStart=/usr/bin/websocketd --port=3000 --staticdir=/home/root/public telnet 127.0.0.1 4000
+
+[Install]
+WantedBy=multi-user.target
+
